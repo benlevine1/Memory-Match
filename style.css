@@ -1,0 +1,17 @@
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    background-color: #1e7e34;
+    height: 80%;
+    width: 80%;
+}
+
+.card{
+    background-color: #2e6da4;
+    margin: 10px;
+
+}
+
