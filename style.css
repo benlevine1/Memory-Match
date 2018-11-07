@@ -28,28 +28,31 @@ body{
     text-align: center;
 }
 
-.game-container{
+.game-board{
     border: 2px solid black;
     height: 85%;
     width: 88%;
-    display: inline-block;
+    display: flex;
 }
 
 .card-container{
     display: flex;
     flex-wrap: wrap;
-    background-color: #721c24;
     margin: 10px;
     height: 33.33%;
     width: 16.66%;
     position: relative;
 }
 
-.card{}
+.card{
+    height: 90%;
+    width: 90%;
+}
+
 .front{
-    background-image: url("memory match images/sustainable_oceans_AdobeStock_watoson.jpg");
+    background-image: url("memory match images/spearfishing logo.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 .back{
 }
