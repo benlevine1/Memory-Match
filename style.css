@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("memory match images/sustainable_oceans_AdobeStock_watoson.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.my-title{
+    border: 2px solid green;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.my-title h3{
+    display: inline-block;
+}
+
+.stats-container{
+    border: 2px solid red;
+    vertical-align: top;
+    height: 85%;
+    width: 10%;
+    display: inline-block;
+    text-align: center;
+}
+
+.game-container{
+    border: 2px solid black;
+    height: 85%;
+    width: 88%;
+    display: inline-block;
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #721c24;
+    margin: 10px;
+    height: 33.33%;
+    width: 16.66%;
+    position: relative;
+}
+
+.card{}
+.front{
+    background-image: url("memory match images/sustainable_oceans_AdobeStock_watoson.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.back{
+}
