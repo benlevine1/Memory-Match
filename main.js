@@ -39,11 +39,11 @@ function createCards() {
 }
 
 function randomizeCards(){
-    var random_number;
+    var random_card =
     random_number = Math.floor(Math.random() * cardsArray.length)
 }
 function showClickedCard(){
-    
+
 }
 
 function removeMatchedCards(){
