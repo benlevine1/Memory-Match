@@ -20,35 +20,66 @@ cardsArray = [
     {name: 'yellowtail', src: "memory%20match%20images/Yellowtail.jpg"}
 ];
 
+cardArrayShuffled =
+
 $(document).ready(readySetGo);
 
-front.css("background-image",)
+// front.css("background-image",)
 function readySetGo(){
     createCards()
 }
 
 function createCards() {
     for (x = 0; x < cardsArray.length; x++){
-        var cardContainer = $('<div>')
-        cardContainer.addClass('card-container');
-        var card = $('<div>');
-        card.addClass('front card');
+        var cardContainer = $('<div>',{
+            'class': "card-container"
+        });
+        var front = $('<div>', {
+            "class": "card-front",
+            'display': 'none'
+        });
+        var back = $('<div>', {
+            'class': 'card-back',
+            'background-image': cardsArray[x].src,
+            'background-repeat': 'no-repeat',
+            'background-size': 'contain',
+            // 'display': 'none'
+        });
         $('.game-board').append(cardContainer);
-        cardContainer.append(card)
+        cardContainer.append(front, back)
     }
 }
 
-function randomizeCards(){
-    var random_card =
-    random_number = Math.floor(Math.random() * cardsArray.length)
+function shuffleArray(array) {
+        var j, x, i;
+        for (i = array.length; i; i -= 1) {
+            j = Math.floor(Math.random() * i);
+            x = array[i - 1];
+            array[i - 1] = array[j];
+            array[j] = x;
+        }
+        return array
 }
+
+// function randomNumber(){
+//     var random_card = cardsArray.length;
+//     random_picture_array = [];
+//     for (x = 0; x < random_card; x++){
+//         random_value = Math.floor(Math.random() * random_card);
+//         random_picture_array.length--;
+//         FrontPicArr.splice(randomNumber, 1);
+//     }
+// }
+
 function showClickedCard(){
-
+    var newDeck = shuffleArray(cardsArray);
+    return newDeck;
 }
-
-function removeMatchedCards(){
-
-}
+// function matchedCards(){
+//     if (blah blah === blah blah){
+//         blah blah.remove();
+//     }
+// }
 
 function resetGame(){
     readySetGo()

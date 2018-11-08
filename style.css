@@ -42,17 +42,21 @@ body{
     flex-flow: row wrap;
     height: 33.33%;
     width: 16.66%;
+    align-content: space-around;
 }
 
-.card{
+.card-front{
     height: 90%;
     width: 90%;
-}
-
-.front{
     background-image: url("memory match images/spearfishing logo.jpg");
     background-repeat: no-repeat;
     background-size: contain;
 }
-.back{
+.card-back{
+    height: 90%;
+    width: 90%;
+}
+
+.hide{
+    display: none;
 }
