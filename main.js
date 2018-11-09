@@ -25,7 +25,8 @@ var newDeck = shuffleArray(cardsArray);
 first_card_clicked = null;
 second_card_clicked = null;
 var match_counter = 0;
-var matches = 2;
+var matches = 9;
+var flag = false;
 
 $(document).ready(readySetGo);
 
@@ -33,7 +34,6 @@ $(document).ready(readySetGo);
 function readySetGo(){
     shuffleArray(cardsArray);
     createCards(newDeck);
-    toggleCard();
 }
 
 function shuffleArray(array) {
@@ -52,75 +52,86 @@ function createCards(shuffledArray) {
         var cardContainer = $('<div>',{
             'class': "card-container"
         });
-        var frontImage = $("<img>", {
-            'class': 'card card-front',
-            src: 'memorymatchimages/baseballfrontpicture.jpg',
-            click: toggleCard
-            });
-        var backImage = $('<img>', {
-            'class': 'card card-back',
-            src: shuffledArray[x].img,
-            // click:
+        var card = $('<div>', {
+            'class': 'card'
+        });
+        var frontImage = $("<div>", {
+            'class': 'card-front',
+            css: {
+                'background-image': 'url("memorymatchimages/baseballfrontpicture.jpg")'
+            },
+            on: {
+                click: clickCard
+            }
+        });
+        var backImage = $('<div>', {
+            'class': 'card-back',
+            css:{
+                'background-image': 'url('+shuffledArray[x].img+')'
+            },
+            on:{
+            click: clickCard
+            }
         });
         $('.game-board').append(cardContainer);
-        cardContainer.append(frontImage, backImage);
+        cardContainer.append(card);
+        card.append(backImage, frontImage);
     }
 }
 
-function toggleCard() {
-    var cardClicked = $(this);
-    cardClicked.toggleClass('hide')
-}
 
-function matchCheck() {
-    if (first_card_clicked = null){
-        first_card_clicked = $('.card-back');
-        console.log(first_card_clicked);
-        return first_card_clicked;
-    } else{ 
-        if (first_card_clicked === second_card_clicked){
-            match_counter++;
-            first_card_clicked = null;
-            second_card_clicked = null;
-            if (match_counter === matches){
-                console.log("You Won")
-            } else {
-                console.log("first card");
-                return first_card_clicked
-            }
+function clickCard() {
+        $(this).addClass('hide');
+        console.log('clicked the card');
+        if (first_card_clicked === null){
+            first_card_clicked = this;
+            return first_card_clicked;
         } else{
-            
+            console.log('second');
+            second_card_clicked = this;
+            console.log('this is the second card');
+            var firstCard = $(first_card_clicked).find('.card-back').css('background-image');
+            var secondCard = $(second_card_clicked).find('.card-back').css('background-image');
+            if (firstCard === secondCard){
+                match_counter++;
+                console.log('Matching Cards');
+            }
         }
-    }
 }
 
 
+//Needs a way to recognize a match...
+//to only allow two cards to be clicked at a time..after two cards are clicked, if not matching, delay 2s...then flip back over
+//needs a way to remove matched cards
+//after all 9 matches have been found, you win
 
 
-// cardArrayShuffled = shuffleArray(cardsArray);
 
-// function showClickedCard(){
-//     var newDeck = shuffleArray(cardsArray);
-//     // var card = this;
-//     for (var x=0; x < newDeck.length; x++){
-//         card.on('click', function () {
-//             card.removeClass('card-front');
-//             card.css({
-//                 'background-repeat': 'no-repeat',
-//                 'background-size': 'contain',
-//                 // 'background-image': 'url': newDeck.src[x]
-//             })
-//         });
-//     }
-//     console.log(newDeck)
-// }
-// // function matchedCards(){
-// //     if (blah blah === blah blah){
-// //         blah blah.remove();
-// //     }
-// // }
-//
-// function resetGame(){
-//     readySetGo()
-// }
+
+    //     $('')
+    //     if (first_card_clicked === null){
+    //         first_card_clicked = this;
+    //         console.log(first_card_clicked);
+    //         return first_card_clicked;
+    //     } else{
+    //         second_card_clicked = this;
+    //         var firstCard = $(firstClickedCard).find('.card-back').html('src');
+    //         var secondCard = $(second_card_clicked).find('.card-back').html('src');
+    //         if (firstCard === secondCard)
+    //             match_counter++;
+    //             first_card_clicked = null;
+    //             second_card_clicked = null;
+    //             if (match_counter === matches){
+    //                 console.log("You Won")
+    //             } else {
+    //                 console.log("first card");
+    //                 return first_card_clicked
+    //             }
+    //         }
+    //     }
+    //     console.log(match_counter);
+    // }
+
+
+
 
