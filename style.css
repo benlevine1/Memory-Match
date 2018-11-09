@@ -49,12 +49,6 @@ body{
     max-height: 100%;
 }
 
-.card-back{
-    position: absolute;
-    left: 0;
-    top: 0;
-    border: 2px solid red;
-}
 .hide{
     display: none;
 }

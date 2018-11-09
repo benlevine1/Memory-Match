@@ -22,6 +22,11 @@ cardsArray = [
 
 var newDeck = shuffleArray(cardsArray);
 
+first_card_clicked = null;
+second_card_clicked = null;
+var match_counter = 0;
+var matches = 2;
+
 $(document).ready(readySetGo);
 
 // front.css("background-image",)
@@ -48,18 +53,17 @@ function createCards(shuffledArray) {
             'class': "card-container"
         });
         var frontImage = $("<img>", {
-            'class': 'card',
+            'class': 'card card-front',
             src: 'memorymatchimages/baseballfrontpicture.jpg',
             click: toggleCard
             });
         var backImage = $('<img>', {
-            'class': 'card',
+            'class': 'card card-back',
             src: shuffledArray[x].img,
-            click: toggleCard
+            // click:
         });
         $('.game-board').append(cardContainer);
         cardContainer.append(frontImage, backImage);
-        console.log(shuffledArray[x])
     }
 }
 
@@ -67,6 +71,29 @@ function toggleCard() {
     var cardClicked = $(this);
     cardClicked.toggleClass('hide')
 }
+
+function matchCheck() {
+    if (first_card_clicked = null){
+        first_card_clicked = $('.card-back');
+        console.log(first_card_clicked);
+        return first_card_clicked;
+    } else{ 
+        if (first_card_clicked === second_card_clicked){
+            match_counter++;
+            first_card_clicked = null;
+            second_card_clicked = null;
+            if (match_counter === matches){
+                console.log("You Won")
+            } else {
+                console.log("first card");
+                return first_card_clicked
+            }
+        } else{
+            
+        }
+    }
+}
+
 
 
 
