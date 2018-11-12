@@ -25,8 +25,11 @@ var newDeck = shuffleArray(cardsArray);
 first_card_clicked = null;
 second_card_clicked = null;
 var match_counter = 0;
+var games_played = 0;
+var games_won;
 var matches = 9;
 var flag = false;
+var efficiency;
 
 $(document).ready(readySetGo);
 
@@ -81,23 +84,49 @@ function createCards(shuffledArray) {
 
 
 function clickCard() {
-        $(this).addClass('hide');
-        console.log('clicked the card');
+    // debugger;
         if (first_card_clicked === null){
-            first_card_clicked = this;
-            return first_card_clicked;
+            first_card_clicked = $(this);
+            $(this).addClass('hide');
+            console.log('clicked the card');
         } else{
             console.log('second');
-            second_card_clicked = this;
+            second_card_clicked = $(this);
+            $(this).addClass('hide');
             console.log('this is the second card');
-            var firstCard = $(first_card_clicked).find('.card-back').css('background-image');
-            var secondCard = $(second_card_clicked).find('.card-back').css('background-image');
+            var firstCard = first_card_clicked.siblings('.card-back').css('background-image');
+            var secondCard = $(second_card_clicked).siblings('.card-back').css('background-image');
+            console.log(firstCard);
+            console.log($(first_card_clicked).siblings('.card-back'));
             if (firstCard === secondCard){
                 match_counter++;
+                // match
                 console.log('Matching Cards');
+                setTimeout(pairMatchAnimation(first_card_clicked, second_card_clicked), 2500)
+            } else {
+                console.log('not matching');
+
+                setTimeout(nonPairMatchAnimation(), 2000);
             }
+            first_card_clicked = null;
+            second_card_clicked = null;
         }
 }
+
+function pairMatchAnimation(card1, card2) {
+    // debugger;
+    card1.parents('.card').addClass('hide');
+    card2.parents('.card').addClass('hide');
+}
+
+
+function nonPairMatchAnimation() {
+    first_card_clicked.prev('.card-back').addClass('hide');
+    second_card_clicked.prev('.card-back').addClass('hide');
+    first_card_clicked.removeClass('hide');
+    second_card_clicked.removeClass('hide');
+}
+
 
 
 //Needs a way to recognize a match...
