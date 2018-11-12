@@ -161,14 +161,15 @@ function resetGame() {
     var reset = $('.reset');
     reset.click(function () {
         debugger;
-        var stats = $('#stats-container .value');
-        stats.empty();
         games_played++;
         var games = $('.games-played .games-counter');
         games.text(games_played + '');
+        var stats = $('#stats-container .value');
+        stats.empty();
         var cards = $('.card-container');
         cards.remove();
-        readySetGo();
+        shuffleArray(cardsArray);
+        createCards(newDeck);
     })
 }
 
