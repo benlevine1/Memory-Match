@@ -6,6 +6,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .flex-container{
     height: 100vh;
     width: 100%;
@@ -27,8 +28,18 @@ body{
     height: 85%;
     width: 15%;
     text-align: center;
+    font-size: 1.7em;
+    color: gold;
+    background-color: slateblue;
+    opacity: 0.7;
 }
 
+.reset{
+    height: 5%;
+    width: 50%;
+    font-size: 0.75em;
+    color: darkred;
+}
 .game-board{
     height: 83%;
     width: 85%;
@@ -38,24 +49,25 @@ body{
 }
 
 .card-container{
-    height: 33.33%;
-    width: 16.66%;
+    height: 33%;
+    width: 15%;
     align-content: space-around;
 }
 
 .card{
     position: relative;
-    width: 90%;
-    height: 90%;
+    height: 95%;
+    width: 80%;
 }
+
 
 .card-back, .card-front{
     position: absolute;
     height: 100%;
     width: 100%;
     border-radius: 25px;
-    opacity: 0.5;
-    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .hide{
