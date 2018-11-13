@@ -157,10 +157,13 @@ function winningDisplay () {
     });
 }
 function resetGame() {
-    debugger;
     var reset = $('.reset');
     reset.click(function () {
         debugger;
+        var winningImage = $('body');
+        winningImage.css({
+            'background-image': 'url("memorymatchimages/baseballstadium.jpg")'
+        });
         games_played++;
         var games = $('.games-played .games-counter');
         games.text(games_played + '');

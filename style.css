@@ -35,10 +35,11 @@ body{
 }
 
 .reset{
-    height: 5%;
+    height: 10%;
     width: 50%;
     font-size: 0.75em;
     color: darkred;
+    border-radius: 10px;
 }
 .game-board{
     height: 83%;
