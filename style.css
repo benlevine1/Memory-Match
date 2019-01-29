@@ -1,17 +1,16 @@
 body{
     margin: 0;
-    height: 100vh;
     width: 100vw;
     background-image: url("memorymatchimages/baseballstadium.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .flex-container{
-    height: 100vh;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+
 }
 .my-title{
     height: 15%;
@@ -36,11 +35,8 @@ body{
     width: 50%;
 }
 
-
-
 .stats-container{
     vertical-align: top;
-    height: 84.4%;
     width: 15%;
     text-align: center;
     font-size: 1.7em;
@@ -67,7 +63,6 @@ body{
     margin: auto;
 }
 .game-board{
-    height: 86%;
     width: 83%;
     display: flex;
     flex-flow: row wrap;
@@ -75,8 +70,8 @@ body{
 }
 
 .card-container{
-    height: 33%;
-    width: 16.5%;
+    height: 220px;
+    width: 185px;
     align-content: space-around;
 }
 
@@ -92,7 +87,7 @@ body{
     position: absolute;
     height: 100%;
     width: 100%;
-    border-radius: 25px;
+    border-radius: 10px;
     background-size: cover;
     background-repeat: no-repeat;
 }
