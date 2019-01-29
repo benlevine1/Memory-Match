@@ -87,6 +87,7 @@ function clickCard() {
         if (first_card_clicked === null){
             first_card_clicked = $(this);
             $(this).addClass('hide');
+            first_card_clicked.siblings('.card-back').off();
         } else{
             second_card_clicked = $(this);
             $(this).addClass('hide');
@@ -107,7 +108,7 @@ function clickCard() {
                     cards.on('click', clickCard);
                     first_card_clicked = null;
                     second_card_clicked = null;
-                },1500);
+                },1200);
                 if (match_counter === matches){
                     //All matches found
                     winningDisplay();
@@ -122,7 +123,7 @@ function clickCard() {
                     cards.on('click', clickCard);
                     first_card_clicked = null;
                     second_card_clicked = null;
-                },1500);
+                },1200);
                 attempts++;
                 var attemptsValue=$('.attempts .value');
                 attemptsValue.text(attempts + ' ');
@@ -141,7 +142,6 @@ function clickCard() {
 function pairMatchAnimation(card1, card2) {
     card2.parents('.card').addClass('hide');
     card1.parents('.card').addClass('hide');
-
 }
 
 function nonPairMatchAnimation() {

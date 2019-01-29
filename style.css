@@ -1,64 +1,85 @@
 body{
     margin: 0;
-    height: 100vh;
     width: 100vw;
     background-image: url("memorymatchimages/baseballstadium.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .flex-container{
-    height: 100vh;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+
 }
 .my-title{
     height: 15%;
     width: 100%;
     text-align: center;
+    display: flex;
+    flex-flow: row wrap;
 }
 
-.my-title h3{
-    display: inline-block;
+.header{
+    margin: auto;
+}
+
+.game-title{
+    height: 50%;
+    width: 100%;
+    margin-top: 1%;
+}
+
+.settings, .about{
+    height: 50%;
+    width: 50%;
 }
 
 .stats-container{
     vertical-align: top;
-    height: 85%;
     width: 15%;
     text-align: center;
     font-size: 1.7em;
     color: gold;
-    background-color: slateblue;
+    background-color: rgb(116, 77, 223);
     opacity: 0.7;
+    border-radius: 20px;
+    margin-left: 0.4%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.stats-row{
+    width: 100%;
+    margin: auto;
 }
 
 .reset{
     height: 10%;
-    width: 50%;
+    width: 75%;
     font-size: 0.75em;
     color: darkred;
     border-radius: 10px;
+    margin: auto;
 }
 .game-board{
-    height: 83%;
-    width: 85%;
+    width: 83%;
     display: flex;
     flex-flow: row wrap;
     align-content: space-evenly;
 }
 
 .card-container{
-    height: 33%;
-    width: 15%;
+    height: 220px;
+    width: 185px;
     align-content: space-around;
 }
 
 .card{
     position: relative;
     height: 95%;
-    width: 80%;
+    width: 84%;
+    margin: auto
 }
 
 
@@ -66,9 +87,13 @@ body{
     position: absolute;
     height: 100%;
     width: 100%;
-    border-radius: 25px;
+    border-radius: 10px;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.game-board:hover{
+    cursor: url('memorymatchimages/baseballbat.png'), auto;
 }
 
 .hide{
