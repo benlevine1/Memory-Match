@@ -92,6 +92,14 @@ body{
     background-repeat: no-repeat;
 }
 
+.card-front{
+    backface-visibility: hidden;
+}
+
+.card-back{
+    transform: rotateY(180deg);
+}
+
 .game-board:hover{
     cursor: url('memorymatchimages/baseballbat.png'), auto;
 }
@@ -99,3 +107,39 @@ body{
 .hide{
     display: none;
 }
+
+ .card.flip{
+    transform: rotateY(180deg)
+}
+
+
+@media only screen and (max-device-width: 600px) and (max-device-height: 675px){
+    .flex-container{
+        height: 100vh;
+    }
+    .my-title{
+        height: 10%;
+        margin-top: 3%
+    }
+
+    .stats-container{
+        height: 10%;
+        width: 100%;
+    }
+    .stats-row{
+        width: 50px;
+    }
+    .game-board{
+        width: 100%;
+        height: 80%;
+    }
+    .reset{
+        height: 50%;
+        width: 10%;
+    }
+  }
+
+  
+
+
+

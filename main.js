@@ -82,15 +82,19 @@ function createCards(shuffledArray) {
     }
 }
 
+function flipCard(card){
+    $(card).toggle('flip')
+}
+
 
 function clickCard() {
         if (first_card_clicked === null){
             first_card_clicked = $(this);
-            $(this).addClass('hide');
+            flipCard(this);
             first_card_clicked.siblings('.card-back').off();
         } else{
             second_card_clicked = $(this);
-            $(this).addClass('hide');
+            flipCard(this);
             var firstCard = first_card_clicked.siblings('.card-back').css('background-image');
             var secondCard = second_card_clicked.siblings('.card-back').css('background-image');
             if (firstCard === secondCard){
@@ -145,8 +149,8 @@ function pairMatchAnimation(card1, card2) {
 }
 
 function nonPairMatchAnimation() {
-    second_card_clicked.removeClass('hide');
-    first_card_clicked.removeClass('hide');
+    second_card_clicked.toggle('flip');
+    first_card_clicked.toggle('flip');
 }
 
 function winningDisplay () {
