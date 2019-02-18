@@ -1,23 +1,23 @@
 var cardsArray;
 cardsArray = [
-    {name: 'babeRuth', 'img': "memorymatchimages/baberuth.jpg"},
-    {name: 'babeRuth', 'img': "memorymatchimages/baberuth.jpg"},
-    {name: 'honusWagner', 'img': "memorymatchimages/honuswagner.jpg"},
-    {name: 'honusWagner', 'img': "memorymatchimages/honuswagner.jpg"},
-    {name: 'johnnyBench', 'img': "memorymatchimages/johnnybench.jpg"},
-    {name: 'johnnyBench', 'img': "memorymatchimages/johnnybench.jpg"},
-    {name: 'louGehrig', 'img': "memorymatchimages/lougehrig.jpg"},
-    {name: 'louGehrig', 'img': "memorymatchimages/lougehrig.jpg"},
-    {name: 'mikeSchmidt', 'img': "memorymatchimages/mikeschmidt.jpg"},
-    {name: 'mikeSchmidt', 'img': "memorymatchimages/mikeschmidt.jpg"},
-    {name: 'rogerHornsby', 'img': "memorymatchimages/rogerhornsby.jpg"},
-    {name: 'rogerHornsby', 'img': "memorymatchimages/rogerhornsby.jpg"},
-    {name: 'sandyKoufax', 'img': "memorymatchimages/sandykoufax.jpg"},
-    {name: 'sandyKoufax', 'img': "memorymatchimages/sandykoufax.jpg"},
-    {name: 'tedWilliams', 'img': "memorymatchimages/tedwilliams.jpg"},
-    {name: 'tedWilliams', 'img': "memorymatchimages/tedwilliams.jpg"},
-    {name: 'willieMays', 'img': "memorymatchimages/williemays.jpg"},
-    {name: 'willieMays', 'img': "memorymatchimages/williemays.jpg"},
+    {name: 'arches', 'img': "memorymatchimages/arches.png"},
+    {name: 'arches', 'img': "memorymatchimages/arches.png"},
+    {name: 'canyonlands', 'img': "memorymatchimages/canyonlands.png"},
+    {name: 'canyonlands', 'img': "memorymatchimages/canyonlands.png"},
+    {name: 'channelislands', 'img': "memorymatchimages/channelislands.png"},
+    {name: 'channelislands', 'img': "memorymatchimages/channelislands.png"},
+    {name: 'deathvalley', 'img': "memorymatchimages/deathvalley.png"},
+    {name: 'deathvalley', 'img': "memorymatchimages/deathvalley.png"},
+    {name: 'grandcanyon', 'img': "memorymatchimages/grandcanyon.png"},
+    {name: 'grandcanyon', 'img': "memorymatchimages/grandcanyon.png"},
+    {name: 'grandteton', 'img': "memorymatchimages/grandteton.png"},
+    {name: 'grandteton', 'img': "memorymatchimages/grandteton.png"},
+    {name: 'jtree', 'img': "memorymatchimages/jtree.png"},
+    {name: 'jtree', 'img': "memorymatchimages/jtree.png"},
+    {name: 'yosemite', 'img': "memorymatchimages/yosemite.png"},
+    {name: 'yosemite', 'img': "memorymatchimages/yosemite.png"},
+    {name: 'zion', 'img': "memorymatchimages/zion.png"},
+    {name: 'zion', 'img': "memorymatchimages/zion.png"},
 ];
 
 var newDeck = shuffleArray(cardsArray);
@@ -61,7 +61,7 @@ function createCards(shuffledArray) {
         var frontImage = $("<div>", {
             'class': 'card-front',
             css: {
-                'background-image': 'url("memorymatchimages/baseballfrontpicture.jpg")'
+                'background-image': 'url("memorymatchimages/nationalparkservice.png")'
             },
             on: {
                 click: clickCard
@@ -166,7 +166,7 @@ function resetGame() {
         debugger;
         var winningImage = $('body');
         winningImage.css({
-            'background-image': 'url("memorymatchimages/baseballstadium.jpg")'
+            'background-image': 'url("memorymatchimages/Mirror-Lake-Summer-9.jpg")'
         });
         games_played++;
         var games = $('.games-played .games-counter');
