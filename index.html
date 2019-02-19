@@ -7,35 +7,62 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="main.js"></script>
 </head>
-
-<header class="my-title" id="myHeader">
-    <h2>Catch Those Fish</h2>
-    <h3>Settings Link</h3>
-    <h3>About Page</h3>
-</header>
-
-<div class="stats-container" id="game-stats">
-    <h1 class="stats">Stats</h1>
-    <div class="games-played">
-        <div class="value">
+<body>
+<div class="flex-container">
+        <!-- Modal content -->
+        <div class="modal-container hide">
+            <div id="myModal" class="winningModal">
+                <div class="modal-content">
+                    <h1>You Won!</h1>
+                    <a href="https://donate.nationalparks.org/page/10780/donate/1">Donate to the National Parks Foundation</a>
+                    <button class="resetModal">Play Again</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="attempts">
-        <div class="label">
-            Attempts:
+    <header class="my-title" id="myHeader">
+        <div class="game-title">
+            <h1 class="header">U.S. National Parks Memory Match</h1>
         </div>
-        <div class="value"></div>
-    </div>
-    <div class="accuracy">
-        <div class="label">Accuracy:</div>
-        <div class="value"></div>
-    </div>
-    <button class="reset">Play Again</button>
-</div>
-<div class="game-container" id="game-area">
-    <div class="card-container">
-        <div class="card">
+    </header>
+    <div class="stats-container" id="game-stats">
+        <h1 class="stats-row">
+            Stats:
+        </h1>
+        <div class="games-played stats-row">
+            <div class="label">
+                Games Played: 
+            </div>
+            <div class="games-counter">
+                0
+            </div>
         </div>
+        <div class="attempts stats-row">
+            <div class="label">
+                Attempts:
+            </div>
+            <div class="value">
+                0
+            </div>
+        </div>
+        <div class="matches stats-row">
+            <div class="label">
+                Matches:
+            </div>
+            <div class="value">
+                0
+            </div>
+        </div>
+        <div class="accuracy stats-row">
+            <div class="label">
+                Accuracy:
+            </div>
+            <div class="value">
+                0%
+            </div>
+        </div>
+        <button class="reset">Play Again</button>
+    </div>
+    <div class="game-board" id="game-area">
     </div>
 </div>
 </body>
