@@ -1,23 +1,23 @@
 var cardsArray;
 cardsArray = [
-    {name: 'babeRuth', 'img': "memorymatchimages/baberuth.jpg"},
-    {name: 'babeRuth', 'img': "memorymatchimages/baberuth.jpg"},
-    {name: 'honusWagner', 'img': "memorymatchimages/honuswagner.jpg"},
-    {name: 'honusWagner', 'img': "memorymatchimages/honuswagner.jpg"},
-    {name: 'johnnyBench', 'img': "memorymatchimages/johnnybench.jpg"},
-    {name: 'johnnyBench', 'img': "memorymatchimages/johnnybench.jpg"},
-    {name: 'louGehrig', 'img': "memorymatchimages/lougehrig.jpg"},
-    {name: 'louGehrig', 'img': "memorymatchimages/lougehrig.jpg"},
-    {name: 'mikeSchmidt', 'img': "memorymatchimages/mikeschmidt.jpg"},
-    {name: 'mikeSchmidt', 'img': "memorymatchimages/mikeschmidt.jpg"},
-    {name: 'rogerHornsby', 'img': "memorymatchimages/rogerhornsby.jpg"},
-    {name: 'rogerHornsby', 'img': "memorymatchimages/rogerhornsby.jpg"},
-    {name: 'sandyKoufax', 'img': "memorymatchimages/sandykoufax.jpg"},
-    {name: 'sandyKoufax', 'img': "memorymatchimages/sandykoufax.jpg"},
-    {name: 'tedWilliams', 'img': "memorymatchimages/tedwilliams.jpg"},
-    {name: 'tedWilliams', 'img': "memorymatchimages/tedwilliams.jpg"},
-    {name: 'willieMays', 'img': "memorymatchimages/williemays.jpg"},
-    {name: 'willieMays', 'img': "memorymatchimages/williemays.jpg"},
+    {name: 'arches', 'img': "memorymatchimages/arches.png"},
+    {name: 'arches', 'img': "memorymatchimages/arches.png"},
+    {name: 'canyonlands', 'img': "memorymatchimages/canyonlands.png"},
+    {name: 'canyonlands', 'img': "memorymatchimages/canyonlands.png"},
+    {name: 'channelislands', 'img': "memorymatchimages/channelislands.png"},
+    {name: 'channelislands', 'img': "memorymatchimages/channelislands.png"},
+    {name: 'deathvalley', 'img': "memorymatchimages/deathvalley.png"},
+    {name: 'deathvalley', 'img': "memorymatchimages/deathvalley.png"},
+    {name: 'grandcanyon', 'img': "memorymatchimages/grandcanyon.png"},
+    {name: 'grandcanyon', 'img': "memorymatchimages/grandcanyon.png"},
+    {name: 'grandteton', 'img': "memorymatchimages/grandteton.png"},
+    {name: 'grandteton', 'img': "memorymatchimages/grandteton.png"},
+    {name: 'jtree', 'img': "memorymatchimages/jtree.png"},
+    {name: 'jtree', 'img': "memorymatchimages/jtree.png"},
+    {name: 'yosemite', 'img': "memorymatchimages/yosemite.png"},
+    {name: 'yosemite', 'img': "memorymatchimages/yosemite.png"},
+    {name: 'zion', 'img': "memorymatchimages/zion.png"},
+    {name: 'zion', 'img': "memorymatchimages/zion.png"},
 ];
 
 var newDeck = shuffleArray(cardsArray);
@@ -61,7 +61,7 @@ function createCards(shuffledArray) {
         var frontImage = $("<div>", {
             'class': 'card-front',
             css: {
-                'background-image': 'url("memorymatchimages/baseballfrontpicture.jpg")'
+                'background-image': 'url("memorymatchimages/nationalparkservice.png")'
             },
             on: {
                 click: clickCard
@@ -82,15 +82,19 @@ function createCards(shuffledArray) {
     }
 }
 
+function flipCard(card){
+    $(card).addClass('hide')
+}
+
 
 function clickCard() {
         if (first_card_clicked === null){
             first_card_clicked = $(this);
-            $(this).addClass('hide');
+            flipCard(this);
             first_card_clicked.siblings('.card-back').off();
         } else{
             second_card_clicked = $(this);
-            $(this).addClass('hide');
+            flipCard(this);
             var firstCard = first_card_clicked.siblings('.card-back').css('background-image');
             var secondCard = second_card_clicked.siblings('.card-back').css('background-image');
             if (firstCard === secondCard){
@@ -101,6 +105,9 @@ function clickCard() {
                 attempts++;
                 var attemptsValue=$('.attempts .value');
                 attemptsValue.text(attempts + ' ');
+                accuracy = match_counter/attempts;
+                var accuracyValue= $('.accuracy .value');
+                accuracyValue.text(Math.floor(accuracy * 100)+'%');
                 var cards = $('.card-front, .card-back');
                 cards.off('click');
                 setTimeout(function(){
@@ -115,15 +122,20 @@ function clickCard() {
                 }
             } else {
                 //Not a Match
+                // debugger;
                 var cards = $('.card-front, .card-back');
                 cards.off('click');
                 flag = true;
+                second_card_clicked.siblings('.card-back').addClass('shake')
+                first_card_clicked.siblings('.card-back').addClass('shake')
                 setTimeout(function(){
                     nonPairMatchAnimation();
                     cards.on('click', clickCard);
+                    second_card_clicked.siblings('.card-back').removeClass('shake')
+                    first_card_clicked.siblings('.card-back').removeClass('shake')
                     first_card_clicked = null;
                     second_card_clicked = null;
-                },1200);
+                },700);
                 attempts++;
                 var attemptsValue=$('.attempts .value');
                 attemptsValue.text(attempts + ' ');
@@ -145,30 +157,41 @@ function pairMatchAnimation(card1, card2) {
 }
 
 function nonPairMatchAnimation() {
-    second_card_clicked.removeClass('hide');
-    first_card_clicked.removeClass('hide');
+        second_card_clicked.removeClass('hide');
+        first_card_clicked.removeClass('hide');
 }
 
 function winningDisplay () {
-    var winningImage = $('body');
-    winningImage.css({
-        'background-image': 'url("memorymatchimages/winningimage.jpg")',
-        'background-size': 'cover'
-    });
+    $('.modal-container').removeClass('hide')
+    // var winningImage = $('body');
+    // winningImage.css({
+    //     'background-image': 'url("memorymatchimages/winningimage.jpg")',
+    //     'background-size': 'cover'
+    // });
 }
 function resetGame() {
     var reset = $('.reset');
-    reset.click(function () {
-        debugger;
+    reset.click(function(){
+        if(attempts===0){
+            return
+        }
         var winningImage = $('body');
         winningImage.css({
-            'background-image': 'url("memorymatchimages/baseballstadium.jpg")'
+            'background-image': 'url("memorymatchimages/Mirror-Lake-Summer-9.jpg")'
         });
+        attempts = 0;
+        match_counter=0;
+        matches=9;
+        accuracy=undefined;
         games_played++;
         var games = $('.games-played .games-counter');
         games.text(games_played + '');
         var stats = $('#stats-container .value');
         stats.empty();
+        $('.matches .value').text('0');
+        $('.attempts .value').text('0');
+        $('.accuracy .value').text('0%');
+
         var cards = $('.card-container');
         cards.remove();
         shuffleArray(cardsArray);

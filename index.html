@@ -9,18 +9,21 @@
 </head>
 <body>
 <div class="flex-container">
+        <!-- Modal content -->
+        <div class="modal-container hide">
+            <div id="myModal" class="winningModal">
+                <div class="modal-content">
+                    <h1>You Won!</h1>
+                    <a href="https://donate.nationalparks.org/page/10780/donate/1">Donate to the National Parks Foundation</a>
+                    <button class="resetModal">Play Again</button>
+                </div>
+            </div>
+        </div>
     <header class="my-title" id="myHeader">
         <div class="game-title">
-            <h1 class="header">Memory Match</h1>
-        </div>
-        <div class="settings">
-            <h2 class="header">Settings Link</h2>
-        </div>
-        <div class="about">
-            <h2 class="header">About Page</h2>
+            <h1 class="header">U.S. National Parks Memory Match</h1>
         </div>
     </header>
-
     <div class="stats-container" id="game-stats">
         <h1 class="stats-row">
             Stats:
@@ -30,6 +33,7 @@
                 Games Played: 
             </div>
             <div class="games-counter">
+                0
             </div>
         </div>
         <div class="attempts stats-row">
@@ -37,6 +41,7 @@
                 Attempts:
             </div>
             <div class="value">
+                0
             </div>
         </div>
         <div class="matches stats-row">
@@ -44,7 +49,7 @@
                 Matches:
             </div>
             <div class="value">
-
+                0
             </div>
         </div>
         <div class="accuracy stats-row">
@@ -52,7 +57,7 @@
                 Accuracy:
             </div>
             <div class="value">
-
+                0%
             </div>
         </div>
         <button class="reset">Play Again</button>
