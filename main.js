@@ -83,7 +83,7 @@ function createCards(shuffledArray) {
 }
 
 function flipCard(card){
-    $(card).toggle('flip')
+    $(card).addClass('hide')
 }
 
 
@@ -105,6 +105,9 @@ function clickCard() {
                 attempts++;
                 var attemptsValue=$('.attempts .value');
                 attemptsValue.text(attempts + ' ');
+                accuracy = match_counter/attempts;
+                var accuracyValue= $('.accuracy .value');
+                accuracyValue.text(Math.floor(accuracy * 100)+'%');
                 var cards = $('.card-front, .card-back');
                 cards.off('click');
                 setTimeout(function(){
@@ -119,15 +122,20 @@ function clickCard() {
                 }
             } else {
                 //Not a Match
+                // debugger;
                 var cards = $('.card-front, .card-back');
                 cards.off('click');
                 flag = true;
+                second_card_clicked.siblings('.card-back').addClass('shake')
+                first_card_clicked.siblings('.card-back').addClass('shake')
                 setTimeout(function(){
                     nonPairMatchAnimation();
                     cards.on('click', clickCard);
+                    second_card_clicked.siblings('.card-back').removeClass('shake')
+                    first_card_clicked.siblings('.card-back').removeClass('shake')
                     first_card_clicked = null;
                     second_card_clicked = null;
-                },1200);
+                },700);
                 attempts++;
                 var attemptsValue=$('.attempts .value');
                 attemptsValue.text(attempts + ' ');
@@ -149,30 +157,41 @@ function pairMatchAnimation(card1, card2) {
 }
 
 function nonPairMatchAnimation() {
-    second_card_clicked.toggle('flip');
-    first_card_clicked.toggle('flip');
+        second_card_clicked.removeClass('hide');
+        first_card_clicked.removeClass('hide');
 }
 
 function winningDisplay () {
-    var winningImage = $('body');
-    winningImage.css({
-        'background-image': 'url("memorymatchimages/winningimage.jpg")',
-        'background-size': 'cover'
-    });
+    $('.modal-container').removeClass('hide')
+    // var winningImage = $('body');
+    // winningImage.css({
+    //     'background-image': 'url("memorymatchimages/winningimage.jpg")',
+    //     'background-size': 'cover'
+    // });
 }
 function resetGame() {
     var reset = $('.reset');
-    reset.click(function () {
-        debugger;
+    reset.click(function(){
+        if(attempts===0){
+            return
+        }
         var winningImage = $('body');
         winningImage.css({
             'background-image': 'url("memorymatchimages/Mirror-Lake-Summer-9.jpg")'
         });
+        attempts = 0;
+        match_counter=0;
+        matches=9;
+        accuracy=undefined;
         games_played++;
         var games = $('.games-played .games-counter');
         games.text(games_played + '');
         var stats = $('#stats-container .value');
         stats.empty();
+        $('.matches .value').text('0');
+        $('.attempts .value').text('0');
+        $('.accuracy .value').text('0%');
+
         var cards = $('.card-container');
         cards.remove();
         shuffleArray(cardsArray);
