@@ -37,6 +37,7 @@ function readySetGo(){
     shuffleArray(cardsArray);
     createCards(newDeck);
     resetGame();
+    $('.reset').click(resetGame);
 }
 
 function shuffleArray(array) {
@@ -118,7 +119,9 @@ function clickCard() {
                 },1200);
                 if (match_counter === matches){
                     //All matches found
-                    winningDisplay();
+                    setTimeout(function(){
+                        winningDisplay();
+                    }, 1300);
                 }
             } else {
                 //Not a Match
@@ -162,7 +165,12 @@ function nonPairMatchAnimation() {
 }
 
 function winningDisplay () {
-    $('.modal-container').removeClass('hide')
+    $('.winningModal').removeClass('hide')
+    $('.close, .resetModal').on('click', function(){
+        $('.winningModal').addClass('hide')
+        resetGame();
+    });
+
     // var winningImage = $('body');
     // winningImage.css({
     //     'background-image': 'url("memorymatchimages/winningimage.jpg")',
@@ -170,33 +178,30 @@ function winningDisplay () {
     // });
 }
 function resetGame() {
-    var reset = $('.reset');
-    reset.click(function(){
-        if(attempts===0){
-            return
-        }
-        var winningImage = $('body');
-        winningImage.css({
-            'background-image': 'url("memorymatchimages/Mirror-Lake-Summer-9.jpg")'
-        });
-        attempts = 0;
-        match_counter=0;
-        matches=9;
-        accuracy=undefined;
-        games_played++;
-        var games = $('.games-played .games-counter');
-        games.text(games_played + '');
-        var stats = $('#stats-container .value');
-        stats.empty();
-        $('.matches .value').text('0');
-        $('.attempts .value').text('0');
-        $('.accuracy .value').text('0%');
+    if(attempts===0){
+        return
+    }
+    var winningImage = $('body');
+    winningImage.css({
+        'background-image': 'url("memorymatchimages/Mirror-Lake-Summer-9.jpg")'
+    });
+    attempts = 0;
+    match_counter=0;
+    matches=9;
+    accuracy=undefined;
+    games_played++;
+    var games = $('.games-played .games-counter');
+    games.text(games_played + '');
+    var stats = $('#stats-container .value');
+    stats.empty();
+    $('.matches .value').text('0');
+    $('.attempts .value').text('0');
+    $('.accuracy .value').text('0%');
 
-        var cards = $('.card-container');
-        cards.remove();
-        shuffleArray(cardsArray);
-        createCards(newDeck);
-    })
+    var cards = $('.card-container');
+    cards.remove();
+    shuffleArray(cardsArray);
+    createCards(newDeck);
 }
 
 
